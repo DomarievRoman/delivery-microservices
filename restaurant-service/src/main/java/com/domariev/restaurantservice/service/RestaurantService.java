@@ -26,7 +26,7 @@ public class RestaurantService {
 
     public RestaurantDto getById(Integer id) {
         Restaurant restaurant = restaurantRepository.findById(id)
-                .orElseThrow(() -> new RestaurantNotFoundException(String.format("Restaurant with id '%s not found'", id)));
+                .orElseThrow(() -> new RestaurantNotFoundException(String.format("Restaurant with id '%s' not found", id)));
         return restaurantMapper.modelToDto(restaurant);
     }
 
