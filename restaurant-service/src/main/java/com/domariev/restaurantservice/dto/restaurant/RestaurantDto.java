@@ -1,5 +1,6 @@
-package com.domariev.restaurantservice.dto;
+package com.domariev.restaurantservice.dto.restaurant;
 
+import com.domariev.restaurantservice.dto.location.RestaurantLocationDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

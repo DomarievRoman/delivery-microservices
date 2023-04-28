@@ -1,8 +1,8 @@
 package com.domariev.restaurantservice.controller;
 
 import com.domariev.restaurantservice.api.RestaurantApi;
-import com.domariev.restaurantservice.dto.FilteredRestaurantDto;
-import com.domariev.restaurantservice.dto.RestaurantDto;
+import com.domariev.restaurantservice.dto.menu.FilteredRestaurantDto;
+import com.domariev.restaurantservice.dto.restaurant.RestaurantDto;
 import com.domariev.restaurantservice.search.criteria.PaginationParameters;
 import com.domariev.restaurantservice.search.criteria.RestaurantSearchCriteria;
 import com.domariev.restaurantservice.service.RestaurantService;

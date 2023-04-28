@@ -15,5 +15,8 @@ spring:
       hibernate.order_by.default_null_ordering: last
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka

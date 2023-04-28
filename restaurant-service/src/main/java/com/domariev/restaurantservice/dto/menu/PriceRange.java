@@ -1,4 +1,4 @@
-package com.domariev.restaurantservice.dto;
+package com.domariev.restaurantservice.dto.menu;
 
 import com.domariev.restaurantservice.search.criteria.RestaurantSearchCriteria;
 

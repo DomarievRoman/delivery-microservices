@@ -1,4 +1,4 @@
-package com.domariev.restaurantservice.dto;
+package com.domariev.restaurantservice.dto.menu;
 
 import lombok.Getter;
 import lombok.Setter;

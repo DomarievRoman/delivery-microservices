@@ -1,4 +1,6 @@
-package com.domariev.restaurantservice.dto;
+package com.domariev.restaurantservice.dto.menu;
+
+import com.domariev.restaurantservice.dto.restaurant.RestaurantDto;
 
 import java.util.List;
 

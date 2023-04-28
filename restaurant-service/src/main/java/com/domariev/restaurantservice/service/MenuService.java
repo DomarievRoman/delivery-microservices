@@ -1,6 +1,10 @@
 package com.domariev.restaurantservice.service;
 
-import com.domariev.restaurantservice.dto.*;
+import com.domariev.restaurantservice.dto.menu.BaseMenuDto;
+import com.domariev.restaurantservice.dto.menu.GroupedMenuDto;
+import com.domariev.restaurantservice.dto.menu.MenuDto;
+import com.domariev.restaurantservice.dto.menu.MenuPositionDto;
+import com.domariev.restaurantservice.dto.restaurant.RestaurantDto;
 import com.domariev.restaurantservice.mapper.MenuMapper;
 import com.domariev.restaurantservice.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.domariev.restaurantservice.api;
 
-import com.domariev.restaurantservice.dto.FilteredRestaurantDto;
-import com.domariev.restaurantservice.dto.RestaurantDto;
+import com.domariev.restaurantservice.dto.menu.FilteredRestaurantDto;
+import com.domariev.restaurantservice.dto.restaurant.RestaurantDto;
 import com.domariev.restaurantservice.search.criteria.PaginationParameters;
 import com.domariev.restaurantservice.search.criteria.RestaurantSearchCriteria;
 import org.springdoc.core.annotations.ParameterObject;

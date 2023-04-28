@@ -1,8 +1,8 @@
 package com.domariev.restaurantservice.service;
 
-import com.domariev.restaurantservice.dto.FilteredRestaurantDto;
-import com.domariev.restaurantservice.dto.PriceRange;
-import com.domariev.restaurantservice.dto.RestaurantDto;
+import com.domariev.restaurantservice.dto.menu.FilteredRestaurantDto;
+import com.domariev.restaurantservice.dto.menu.PriceRange;
+import com.domariev.restaurantservice.dto.restaurant.RestaurantDto;
 import com.domariev.restaurantservice.exception.RestaurantNotFoundException;
 import com.domariev.restaurantservice.mapper.RestaurantMapper;
 import com.domariev.restaurantservice.model.Restaurant;

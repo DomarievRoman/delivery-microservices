@@ -1,6 +1,6 @@
 package com.domariev.restaurantservice.mapper;
 
-import com.domariev.restaurantservice.dto.MenuPositionDto;
+import com.domariev.restaurantservice.dto.menu.MenuPositionDto;
 import com.domariev.restaurantservice.model.MenuPosition;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

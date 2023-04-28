@@ -1,6 +1,6 @@
 package com.domariev.restaurantservice.search.criteria;
 
-import com.domariev.restaurantservice.dto.PriceRange;
+import com.domariev.restaurantservice.dto.menu.PriceRange;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 

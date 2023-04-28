@@ -1,6 +1,6 @@
 package com.domariev.restaurantservice.api;
 
-import com.domariev.restaurantservice.dto.BaseMenuDto;
+import com.domariev.restaurantservice.dto.menu.BaseMenuDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

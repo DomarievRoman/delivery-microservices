@@ -1,7 +1,7 @@
 package com.domariev.restaurantservice.controller;
 
 import com.domariev.restaurantservice.api.MenuApi;
-import com.domariev.restaurantservice.dto.BaseMenuDto;
+import com.domariev.restaurantservice.dto.menu.BaseMenuDto;
 import com.domariev.restaurantservice.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
