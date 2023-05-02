@@ -21,6 +21,7 @@
         <module>restaurant-service</module>
         <module>location-service</module>
         <module>eureka-server</module>
+        <module>api-gateway</module>
     </modules>
 
     <properties>
