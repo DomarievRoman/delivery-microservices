@@ -1,0 +1,33 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: identity-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/identity_service_db
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+jwt:
+  secretKey: "67556B58703273357638792F423F4528482B4D6250655368566D597133743677"
+  expirationTime: 3600000
+
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE

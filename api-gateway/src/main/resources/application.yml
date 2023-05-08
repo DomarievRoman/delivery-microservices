@@ -17,6 +17,10 @@ spring:
           uri: lb://location-service
           predicates:
             - Path=/location/**
+        - id: identity-service
+          uri: lb://identity-service
+          predicates:
+            - Path=/auth/**, /management/admin/**
         - id: eureka-server
           uri: http://localhost:8761
           predicates:
