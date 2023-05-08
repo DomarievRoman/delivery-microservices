@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.domariev.identityservice.config.constants.SecurityConstants.*;
 import static com.domariev.identityservice.model.RoleAuthority.ADMIN;
 
 @Configuration
@@ -50,8 +51,9 @@ public class SecurityConfiguration {
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/user/**", "/error").permitAll()
-                .requestMatchers("/management/admin/**").hasAuthority(ADMIN.getName())
+                .requestMatchers(WHITELISTED_URLS).permitAll()
+                .requestMatchers(ADMIN_URLS).hasAuthority(ADMIN.getName())
+                .requestMatchers(USER_MANAGEMENT_URLS).hasAnyAuthority(ANY_USER_AUTHORITY)
                 .anyRequest()
                 .authenticated()
                 .and()

@@ -16,5 +16,9 @@ public class PaymentMethod {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "card_id")
     private PaymentCard paymentCard;
+    @Column(name = "active")
+    private boolean isActive;
+    @ManyToOne
+    private User user;
 
 }

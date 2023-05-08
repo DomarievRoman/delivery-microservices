@@ -2,6 +2,8 @@ package com.domariev.identityservice.service;
 
 import com.domariev.identityservice.dto.AuthenticationRequestDto;
 import com.domariev.identityservice.dto.AuthenticationResponseDto;
+import com.domariev.identityservice.dto.RegistrationRequestDto;
+import com.domariev.identityservice.exception.UserAlreadyExistsException;
 import com.domariev.identityservice.model.Role;
 import com.domariev.identityservice.model.RoleAuthority;
 import com.domariev.identityservice.model.User;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,11 +34,16 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
-    public void register(AuthenticationRequestDto authRequest) {
+    public void register(RegistrationRequestDto registrationRequest) {
+        String email = registrationRequest.getEmail();
+        Optional<User> userDetails = userRepository.findByEmail(email);
+        if (userDetails.isPresent()) {
+            throw new UserAlreadyExistsException(String.format("User with email %s is already exists", email));
+        }
         User user = new User();
         Role customerRole = roleRepository.findByAuthority(RoleAuthority.CUSTOMER);
-        user.setEmail(authRequest.getEmail());
-        user.setPassword(passwordEncoder.encode(authRequest.getPassword()));
+        user.setEmail(email);
+        user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
         user.getRoles().add(customerRole);
         userRepository.save(user);
     }

@@ -1,7 +1,6 @@
 package com.domariev.identityservice.service;
 
 import com.domariev.identityservice.dto.UserDto;
-import com.domariev.identityservice.exception.InvalidUserIdException;
 import com.domariev.identityservice.exception.RoleAlreadyGrantedException;
 import com.domariev.identityservice.mapper.UserMapper;
 import com.domariev.identityservice.model.Role;
@@ -19,12 +18,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AdminService {
 
+    private final UserDetailsServiceImpl userDetailsService;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final UserMapper userMapper;
 
     public UserDto addRole(Long userId, RoleAuthority roleAuthority) {
-        User user = findUserEntityById(userId);
+        User user = userDetailsService.findUserEntityById(userId);
         if (user.getRoles().stream().anyMatch(role -> role.getAuthority().equals(roleAuthority))) {
             throw new RoleAlreadyGrantedException(String.format("Role '%s' was already granted to user with id %s", roleAuthority, userId));
         }
@@ -42,12 +42,8 @@ public class AdminService {
     }
 
     public UserDto getById(Long userId) {
-        User user = findUserEntityById(userId);
+        User user = userDetailsService.findUserEntityById(userId);
         return userMapper.modelToDto(user);
     }
 
-    private User findUserEntityById(Long userId) {
-        return userRepository.findById(userId)
-                .orElseThrow(() -> new InvalidUserIdException(String.format("User with provided id - %s not found", userId)));
-    }
 }

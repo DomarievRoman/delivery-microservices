@@ -1,6 +1,7 @@
 package com.domariev.identityservice.exception.handler;
 
 import com.domariev.identityservice.exception.ApiError;
+import com.domariev.identityservice.exception.UserAlreadyExistsException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,20 @@ public class SecurityExceptionHandler {
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ResponseEntity<ApiError> handleUsernameNotFoundException(UsernameNotFoundException ex,
                                                                     HttpServletRequest request) {
+        HttpStatus notFoundStatus = HttpStatus.UNAUTHORIZED;
+        ApiError apiError = new ApiError(request.getRequestURI(),
+                ex.getLocalizedMessage(),
+                notFoundStatus.getReasonPhrase(),
+                notFoundStatus.value(),
+                LocalDateTime.now());
+
+        return new ResponseEntity<>(apiError, notFoundStatus);
+    }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ResponseEntity<ApiError> handleUserAlreadyExistsException(UserAlreadyExistsException ex,
+                                                                     HttpServletRequest request) {
         HttpStatus notFoundStatus = HttpStatus.UNAUTHORIZED;
         ApiError apiError = new ApiError(request.getRequestURI(),
                 ex.getLocalizedMessage(),
