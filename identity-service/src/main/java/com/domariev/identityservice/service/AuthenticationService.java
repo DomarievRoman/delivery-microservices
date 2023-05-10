@@ -61,7 +61,10 @@ public class AuthenticationService {
     }
 
     private AuthenticationResponseDto createAuthenticationResponse(UserDetails user) {
-        String token = jwtService.generateToken(Map.of("authorities", user.getAuthorities()), user);
+        Collection<String> authorities = user.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
+        String token = jwtService.generateToken(Map.of("authorities", authorities), user);
         return AuthenticationResponseDto.builder()
                 .token(token)
                 .build();

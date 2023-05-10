@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -34,9 +35,18 @@ public class JwtService {
         }
     }
 
+    public boolean isTokenValid(String token) {
+        return isTokenNonExpired(token);
+    }
+
     public boolean isTokenValid(String token, UserDetails userDetails) {
         String username = extractUsername(token);
-        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
+        return username.equals(userDetails.getUsername()) && isTokenNonExpired(token);
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<String> extractAuthorities(String token) {
+        return extractClaim(token, s -> s.get("authorities", List.class));
     }
 
     public String extractUsername(String token) {
@@ -54,8 +64,8 @@ public class JwtService {
                 .compact();
     }
 
-    private boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
+    private boolean isTokenNonExpired(String token) {
+        return !extractExpiration(token).before(new Date());
     }
 
     private Date extractExpiration(String token) {
