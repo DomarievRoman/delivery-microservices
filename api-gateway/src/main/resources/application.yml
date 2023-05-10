@@ -12,11 +12,48 @@ spring:
         - id: restaurant-service
           uri: lb://restaurant-service
           predicates:
-            - Path=/restaurants/**, /menu/**
+            - Path=/restaurants/all
+          filters:
+            - name: RoleAuth
+              args:
+                roles:
+                  - ADMIN
+        - id: restaurant-service
+          uri: lb://restaurant-service
+          predicates:
+            - Path=/restaurants, /restaurants/id/**
+          filters:
+            - name: RoleAuth
+              args:
+                roles:
+                  - ADMIN
+                  - CUSTOMER
+                  - MANAGER
+                  - COURIER
+                  - COOK
+        - id: restaurant-service
+          uri: lb://restaurant-service
+          predicates:
+            - Path=/menu/**
+          filters:
+            - name: RoleAuth
+              args:
+                roles:
+                  - ADMIN
+                  - CUSTOMER
+                  - MANAGER
+                  - COURIER
+                  - COOK
         - id: location-service
           uri: lb://location-service
           predicates:
             - Path=/location/**
+          filters:
+            - name: RoleAuth
+              args:
+                roles:
+                  - ADMIN
+                  - COURIER
         - id: identity-service
           uri: lb://identity-service
           predicates:
